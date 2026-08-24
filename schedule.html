@@ -17,7 +17,6 @@
         .time-badge {
             background: linear-gradient(135deg, #1e40af, #3b82f6);
         }
-        /* 移除 number 欄位的上下微調按鈕 */
         input[type=number]::-webkit-inner-spin-button, 
         input[type=number]::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
@@ -26,7 +25,6 @@
         input[type=number] {
             -moz-appearance: textfield;
         }
-        /* Custom scrollbar for grid */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -118,19 +116,16 @@
 
         <!-- Timetable Card Container -->
         <div class="bg-white rounded-2xl shadow-md border border-slate-200/80 overflow-hidden">
-            <!-- Scrollable table view -->
             <div class="overflow-x-auto">
                 <table class="w-full border-collapse min-w-[700px] table-fixed">
                     <thead>
                         <tr class="bg-slate-800 text-white text-center">
-                            <!-- Period / Time Header -->
                             <th class="py-3 px-2 w-28 sm:w-32 text-xs sm:text-sm font-semibold border-b border-slate-700">
                                 <div class="flex items-center justify-center gap-1">
                                     <i class="fa-regular fa-clock"></i>
                                     <span>節次 / 時間</span>
                                 </div>
                             </th>
-                            <!-- Days Headers -->
                             <th class="py-3 px-2 text-xs sm:text-sm font-semibold border-b border-r border-slate-700">星期一</th>
                             <th class="py-3 px-2 text-xs sm:text-sm font-semibold border-b border-r border-slate-700">星期二</th>
                             <th class="py-3 px-2 text-xs sm:text-sm font-semibold border-b border-r border-slate-700">星期三</th>
@@ -166,7 +161,6 @@
 
     <div id="courseModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col overflow-hidden border border-slate-100 animate-fadeIn">
-            <!-- Modal Header -->
             <div class="bg-slate-900 px-6 py-4 text-white flex justify-between items-center">
                 <h3 id="modalTitle" class="text-lg font-bold flex items-center gap-2">
                     <i class="fa-solid fa-book-open text-blue-400"></i>
@@ -177,11 +171,8 @@
                 </button>
             </div>
 
-            <!-- Modal Form Body -->
             <form id="courseForm" onsubmit="handleFormSubmit(event)" class="p-6 overflow-y-auto space-y-4 text-sm">
                 <input type="hidden" id="courseId" value="">
-
-                <!-- 課程名稱 -->
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">
                         課程名稱 <span class="text-rose-500">*</span>
@@ -190,7 +181,6 @@
                         class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                 </div>
 
-                <!-- 流水號 / 課號、授課老師與學分數 -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">
@@ -199,8 +189,6 @@
                         <input type="text" id="courseSerial" placeholder="例如：10984" 
                             class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                     </div>
-
-                    <!-- 授課老師 -->
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">
                             授課老師
@@ -208,8 +196,6 @@
                         <input type="text" id="courseTeacher" placeholder="例如：王小明 教授" 
                             class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                     </div>
-
-                    <!-- 學分數 -->
                     <div>
                         <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">
                             學分數
@@ -219,7 +205,6 @@
                     </div>
                 </div>
 
-                <!-- 上課地點 -->
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">
                         上課地點
@@ -228,18 +213,14 @@
                         class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition">
                 </div>
 
-                <!-- 顏色標籤 -->
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                         課程顏色標籤
                     </label>
-                    <div id="colorPickerContainer" class="flex flex-wrap gap-2">
-                        <!-- Dynamic Color Badges -->
-                    </div>
+                    <div id="colorPickerContainer" class="flex flex-wrap gap-2"></div>
                     <input type="hidden" id="courseColor" value="blue">
                 </div>
 
-                <!-- 上課時間選擇器 (可多選節次) -->
                 <div class="border border-slate-200 rounded-xl p-3 bg-slate-50">
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-xs font-semibold text-slate-700 uppercase">
@@ -249,14 +230,9 @@
                             <i class="fa-solid fa-plus text-[10px]"></i> 新增上課時段
                         </button>
                     </div>
-
-                    <!-- Time slots container -->
-                    <div id="timeSlotsContainer" class="space-y-2">
-                        <!-- Time slot rows injected here -->
-                    </div>
+                    <div id="timeSlotsContainer" class="space-y-2"></div>
                 </div>
 
-                <!-- 備註 -->
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">
                         備註 / 說明
@@ -265,7 +241,6 @@
                         class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition resize-none"></textarea>
                 </div>
 
-                <!-- Submit Buttons -->
                 <div class="pt-2 flex justify-end gap-2 border-t border-slate-100">
                     <button type="button" onclick="closeCourseModal()" class="px-4 py-2 rounded-lg border border-slate-300 text-slate-600 hover:bg-slate-100 transition font-medium">
                         取消
@@ -284,9 +259,7 @@
                 <button onclick="closeDetailsModal()" class="absolute top-4 right-4 text-white/80 hover:text-white p-1 rounded-lg">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
-                <div id="detailsSerialBadge" class="inline-block text-[11px] font-mono uppercase bg-white/20 px-2 py-0.5 rounded backdrop-blur-md mb-2">
-                    -
-                </div>
+                <div id="detailsSerialBadge" class="inline-block text-[11px] font-mono uppercase bg-white/20 px-2 py-0.5 rounded backdrop-blur-md mb-2">-</div>
                 <h2 id="detailsName" class="text-2xl font-bold"></h2>
             </div>
             
@@ -331,7 +304,6 @@
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="pt-2 flex justify-between gap-2 border-t border-slate-100">
                     <button onclick="deleteCurrentCourse()" class="px-3.5 py-2 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition font-medium flex items-center gap-1.5 text-xs">
                         <i class="fa-regular fa-trash-can"></i> 刪除課程
@@ -349,10 +321,8 @@
         </div>
     </div>
 
-    <!-- AI Hub Modal (Streamlined for Schedule Diagnosis Only) -->
     <div id="aiHubModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col overflow-hidden border border-slate-100">
-            <!-- Modal Header -->
             <div class="bg-gradient-to-r from-purple-700 via-indigo-700 to-blue-700 px-6 py-4 text-white flex justify-between items-center">
                 <div class="flex items-center gap-2.5">
                     <div class="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center text-amber-300 text-lg">
@@ -368,22 +338,37 @@
                 </button>
             </div>
 
-            <!-- Modal Content Area -->
             <div class="p-6 overflow-y-auto flex-grow text-sm space-y-4">
-                <div class="bg-purple-50 border border-purple-200 rounded-xl p-3 text-xs text-purple-900 flex items-center gap-2">
-                    <i class="fa-solid fa-lightbulb text-amber-500 text-base shrink-0"></i>
-                    <span>AI 將自動分析您目前的課程時間佈局，給予修課負荷評估、空堂利用與讀書計畫建議。</span>
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-3 text-xs text-purple-900 space-y-1.5">
+                    <div class="flex items-center gap-2 font-semibold">
+                        <i class="fa-solid fa-key text-purple-600"></i>
+                        <span>本機使用 API 金鑰說明：</span>
+                    </div>
+                    <p class="text-purple-800 leading-relaxed">
+                        當您將檔案下載至本機離線使用時，可於下方輸入您的 <span class="font-semibold underline">Gemini API Key</span>（可至 Google AI Studio 免費申請）。金鑰僅會暫存於您的瀏覽器記憶體中，產生報告後您可以隨時點擊「清除金鑰」按鈕刪除。
+                    </p>
+                </div>
+
+                <!-- API Key Input Field -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">
+                        Gemini API Key
+                    </label>
+                    <div class="flex gap-2">
+                        <input type="password" id="userApiKeyInput" placeholder="請輸入您的 Gemini API 金鑰 (AIzaSy...)" 
+                            class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none text-xs font-mono">
+                        <button type="button" onclick="clearStoredApiKey()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-xs font-medium transition shrink-0" title="清除金鑰">
+                            清除金鑰
+                        </button>
+                    </div>
                 </div>
 
                 <button onclick="runScheduleAnalysis()" id="runAnalyzeBtn" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-xl transition shadow flex justify-center items-center gap-2 text-xs">
                     <i class="fa-solid fa-brain"></i> 生成全週課表診斷報告
                 </button>
 
-                <div id="aiAnalysisOutput" class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-700 min-h-[140px] max-h-72 overflow-y-auto space-y-2 leading-relaxed hidden">
-                    <!-- AI Analysis Content -->
-                </div>
+                <div id="aiAnalysisOutput" class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-700 min-h-[140px] max-h-72 overflow-y-auto space-y-2 leading-relaxed hidden"></div>
 
-                <!-- Common AI Loading Spinner -->
                 <div id="aiLoading" class="hidden py-6 text-center space-y-3">
                     <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-purple-500 border-t-transparent"></div>
                     <p id="aiLoadingText" class="text-xs font-semibold text-purple-700">Gemini 思考中，請稍候...</p>
@@ -392,7 +377,6 @@
         </div>
     </div>
 
-    <!-- Title Edit Modal -->
     <div id="titleModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-100 p-6 space-y-4">
             <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
@@ -414,7 +398,6 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, addDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Color themes for schedule items
         const COLOR_THEMES = {
             blue: { bg: 'bg-blue-600', text: 'text-white', hover: 'hover:bg-blue-700', headerBg: 'bg-blue-600' },
             emerald: { bg: 'bg-emerald-600', text: 'text-white', hover: 'hover:bg-emerald-700', headerBg: 'bg-emerald-600' },
@@ -426,7 +409,6 @@
             orange: { bg: 'bg-orange-600', text: 'text-white', hover: 'hover:bg-orange-700', headerBg: 'bg-orange-600' }
         };
 
-        // Standard schedule period definitions (1-4, Z lunch, 5-9, A-F night)
         const PERIODS = [
             { id: '1', time: '08:00~08:50' },
             { id: '2', time: '09:00~09:50' },
@@ -446,7 +428,6 @@
             { id: 'F', time: '23:00~23:50', isNight: true }
         ];
 
-        // Days of the week
         const DAYS = [
             { id: 1, name: '星期一' },
             { id: 2, name: '星期二' },
@@ -457,7 +438,6 @@
             { id: 7, name: '星期日', isWeekend: true }
         ];
 
-        // Firebase Configuration setup
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-course-app';
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
             ? JSON.parse(__firebase_config) 
@@ -474,7 +454,7 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // Application State (hideNight 預設改為 true)
+        // Application State (預設會於載入資料後根據是否有夜間或週末課程自動切換顯示)
         window.state = {
             currentUser: null,
             isLocalMode: false,
@@ -482,10 +462,10 @@
             showWeekend: false,
             hideNight: true, 
             scheduleTitle: '大學/高中課程表',
-            activeCourseIdForDetails: null
+            activeCourseIdForDetails: null,
+            hasAutoCheckedVisibility: false
         };
 
-        // Firebase Authentication initialization with LocalStorage Fallback
         async function initAuth() {
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
@@ -496,7 +476,6 @@
                     enableLocalFallback();
                 }
             } catch (err) {
-                console.warn("Firebase 初始化或登入失敗，切換至本地儲存模式：", err);
                 enableLocalFallback();
             }
         }
@@ -517,6 +496,7 @@
                 const storedCourses = localStorage.getItem('course_app_courses');
                 if (storedCourses) {
                     window.state.courses = JSON.parse(storedCourses);
+                    checkAndApplyDefaultVisibility();
                     renderTimetable();
                     updateStats();
                 }
@@ -539,10 +519,52 @@
             }
         }
 
-        // General Gemini generateContent Caller
+        // Check if courses contain night or weekend sessions and set initial visibility preference
+        function checkAndApplyDefaultVisibility() {
+            if (window.state.hasAutoCheckedVisibility) return;
+            
+            let hasNight = false;
+            let hasWeekend = false;
+
+            window.state.courses.forEach(c => {
+                if (c.timeSlots) {
+                    c.timeSlots.forEach(slot => {
+                        if (slot.day === 6 || slot.day === 7) {
+                            hasWeekend = true;
+                        }
+                        if (slot.periods && slot.periods.some(p => ['A','B','C','D','E','F'].includes(p))) {
+                            hasNight = true;
+                        }
+                    });
+                }
+            });
+
+            if (hasNight) {
+                window.state.hideNight = false;
+            }
+            if (hasWeekend) {
+                window.state.showWeekend = true;
+            }
+
+            window.state.hasAutoCheckedVisibility = true;
+            updateButtonLabels();
+        }
+
+        function updateButtonLabels() {
+            const weekendBtnText = document.getElementById('weekendBtnText');
+            if (weekendBtnText) {
+                weekendBtnText.textContent = window.state.showWeekend ? '隱藏週末' : '顯示週末';
+            }
+            const nightBtnText = document.getElementById('nightBtnText');
+            if (nightBtnText) {
+                nightBtnText.textContent = window.state.hideNight ? '顯示夜間(A-F)' : '隱藏夜間(A-F)';
+            }
+        }
+
+        // Gemini AI Caller supporting dynamic API key retrieval
         async function callGeminiApi(payload, model = 'gemini-2.5-flash') {
-            // 注意：若下載 HTML 至本機使用，此處的空字串 apiKey 會因缺少運行環境注入金鑰而無法運作
-            const apiKey = ""; 
+            const userApiKey = document.getElementById('userApiKeyInput').value.trim();
+            const apiKey = userApiKey || ""; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
             let delay = 1000;
@@ -556,14 +578,17 @@
 
                     if (response.ok) {
                         return await response.json();
+                    } else {
+                        const errJson = await response.json().catch(() => ({}));
+                        throw new Error(errJson.error?.message || `API Error: ${response.status}`);
                     }
                 } catch (err) {
-                    // Retry silently
+                    if (i === 2) throw err;
                 }
                 await new Promise(r => setTimeout(r, delay));
                 delay *= 2;
             }
-            throw new Error("Gemini API 請求失敗，請稍後重試。");
+            throw new Error("Gemini API 請求失敗，請檢查 API 金鑰是否正確。");
         }
 
         window.openAiModal = function() {
@@ -574,9 +599,21 @@
             document.getElementById('aiHubModal').classList.add('hidden');
         };
 
+        window.clearStoredApiKey = function() {
+            const input = document.getElementById('userApiKeyInput');
+            input.value = '';
+            alertModal("API 金鑰已從輸入框中清除！");
+        };
+
         window.runScheduleAnalysis = async function() {
             if (window.state.courses.length === 0) {
                 alertModal("課表中目前沒有課程，請先加入課程後再進行診斷！");
+                return;
+            }
+
+            const userApiKey = document.getElementById('userApiKeyInput').value.trim();
+            if (!userApiKey) {
+                alertModal("請先在上方欄位輸入您的 Gemini API Key 才能執行 AI 診斷！");
                 return;
             }
 
@@ -605,7 +642,7 @@
                 outputEl.classList.remove('hidden');
             } catch (err) {
                 console.error("Schedule analysis error:", err);
-                alertModal("課表診斷失敗。若您是將檔案下載到本機離線使用，此功能需要您填入自己的 Gemini API 金鑰方能運作。");
+                alertModal("課表診斷失敗：" + (err.message || "請檢查 API 金鑰是否有效。"));
             } finally {
                 setAiLoading(false);
             }
@@ -650,10 +687,10 @@
                     courses.push({ id: docSnap.id, ...docSnap.data() });
                 });
                 window.state.courses = courses;
+                checkAndApplyDefaultVisibility();
                 renderTimetable();
                 updateStats();
             }, (error) => {
-                console.warn("Cloud snapshot failed, switching to local mode:", error);
                 enableLocalFallback();
             });
         }
@@ -668,10 +705,9 @@
                         document.getElementById('scheduleTitleText').textContent = data.title;
                     }
                 }
-            }, (err) => console.log("Settings snapshot notice:", err));
+            }, (err) => {});
         }
 
-        // Render Color Badges inside Form
         function renderColorPicker() {
             const container = document.getElementById('colorPickerContainer');
             container.innerHTML = '';
@@ -710,7 +746,6 @@
             const filteredPeriods = PERIODS.filter(p => !window.state.hideNight || !p.isNight);
             const activeDays = DAYS.filter(d => !d.isWeekend || window.state.showWeekend);
 
-            // Update column headers visibility for Weekend
             document.querySelectorAll('.weekend-col').forEach(el => {
                 if (window.state.showWeekend) {
                     el.classList.remove('hidden');
@@ -719,7 +754,6 @@
                 }
             });
 
-            // Matrix to track cells spanned by rowspan
             const coveredCells = {};
             activeDays.forEach(d => {
                 coveredCells[d.id] = {};
@@ -733,7 +767,6 @@
                     tr.className = 'hover:bg-slate-50/80 transition-colors h-16';
                 }
 
-                // Period Header Cell
                 const periodTd = document.createElement('td');
                 periodTd.className = 'p-2 text-center border-r border-b border-slate-200 bg-slate-50 select-none h-16';
                 
@@ -753,7 +786,6 @@
                 `;
                 tr.appendChild(periodTd);
 
-                // Day Cells
                 activeDays.forEach((day) => {
                     if (coveredCells[day.id][period.id]) {
                         return;
@@ -799,8 +831,6 @@
 
                         let serialHtml = matchingCourse.serial ? `<span class="text-[10px] opacity-80 font-mono block leading-none truncate">[${matchingCourse.serial}]</span>` : '';
                         let spanBadge = spanCount > 1 ? `<span class="text-[9px] bg-black/20 text-white/90 px-1.5 py-0.5 rounded font-mono font-normal ml-1 shrink-0">${spanCount}節連堂</span>` : '';
-                        
-                        // 【依據要求調整】：將授課老師與上課地點資訊移至課程名稱正下方
                         let teacherHtml = matchingCourse.teacher ? `<div class="text-[10px] opacity-90 truncate flex items-center gap-1 mt-0.5"><i class="fa-solid fa-user-tie text-[9px]"></i>${matchingCourse.teacher}</div>` : '';
                         let locationHtml = matchingCourse.location ? `<div class="text-[10px] font-medium bg-black/15 px-1.5 py-0.5 rounded text-white truncate inline-block mt-0.5"><i class="fa-solid fa-location-dot text-[8px] mr-1"></i>${matchingCourse.location}</div>` : '';
 
@@ -986,6 +1016,7 @@
                         window.state.courses.push({ id: newId, ...courseData });
                     }
                     saveLocalData();
+                    checkAndApplyDefaultVisibility();
                     renderTimetable();
                     updateStats();
                 } else {
@@ -1000,7 +1031,6 @@
 
                 closeCourseModal();
             } catch (error) {
-                console.error("Failed to save course:", error);
                 enableLocalFallback();
                 closeCourseModal();
             }
@@ -1059,7 +1089,6 @@
                     }
                     closeDetailsModal();
                 } catch (error) {
-                    console.error("Delete failed:", error);
                     alertModal("刪除失敗，請再試一次。");
                 }
             }
@@ -1112,9 +1141,7 @@
                         });
                         await Promise.all(deletePromises);
                     }
-                } catch (err) {
-                    console.error("Clear error:", err);
-                }
+                } catch (err) {}
             }
         };
 
@@ -1137,7 +1164,9 @@
                 { name: "資料結構", serial: "CS201", teacher: "林教授", location: "電資大樓 305", credits: 3, color: "emerald", notes: "期中考為上機考，請攜帶筆電。", timeSlots: [{ day: 2, periods: ["5", "6", "7"] }] },
                 { name: "體育 - 籃球", serial: "PE101", teacher: "王教練", location: "室外籃球場", credits: 1, color: "orange", notes: "雨天改至室內體育館。", timeSlots: [{ day: 5, periods: ["6", "7"] }] },
                 { name: "台灣歷史與文化", serial: "GE105", teacher: "張教授", location: "文學院 102", credits: 2, color: "amber", notes: "通識課程，期末需繳交 3000 字報告。", timeSlots: [{ day: 4, periods: ["3", "4"] }] },
-                { name: "計算機概論", serial: "CS101", teacher: "李教授", location: "資電大樓 101", credits: 3, color: "purple", notes: "大一必修核心課程。", timeSlots: [{ day: 1, periods: ["6", "7"] }, { day: 3, periods: ["6"] }] }
+                { name: "計算機概論", serial: "CS101", teacher: "李教授", location: "資電大樓 101", credits: 3, color: "purple", notes: "大一必修核心課程。", timeSlots: [{ day: 1, periods: ["6", "7"] }, { day: 3, periods: ["6"] }] },
+                { name: "夜間人工智慧特論", serial: "AI901", teacher: "特聘教授", location: "線上視訊教室", credits: 3, color: "indigo", notes: "夜間時段上課。", timeSlots: [{ day: 3, periods: ["A", "B", "C"] }] },
+                { name: "週末專題研討", serial: "WEEK99", teacher: "召集人", location: "國際會議廳", credits: 2, color: "teal", notes: "週末假日專題研討。", timeSlots: [{ day: 6, periods: ["2", "3"] }] }
             ];
 
             try {
@@ -1154,28 +1183,26 @@
 
                 if (window.state.isLocalMode) {
                     saveLocalData();
+                    checkAndApplyDefaultVisibility();
                     renderTimetable();
                     updateStats();
                 }
                 
-                alertModal("✅ 測試資料已成功載入！");
+                alertModal("✅ 測試資料已成功載入！系統已自動偵測夜間與週末課程並展開顯示。");
             } catch (err) {
-                console.error("載入測試資料失敗:", err);
                 alertModal("載入測試資料時發生錯誤，請稍後重試。");
             }
         };
 
         window.toggleWeekend = function() {
             window.state.showWeekend = !window.state.showWeekend;
-            const btnText = document.getElementById('weekendBtnText');
-            btnText.textContent = window.state.showWeekend ? '隱藏週末' : '顯示週末';
+            updateButtonLabels();
             renderTimetable();
         };
 
         window.toggleNightSlots = function() {
             window.state.hideNight = !window.state.hideNight;
-            const btnText = document.getElementById('nightBtnText');
-            btnText.textContent = window.state.hideNight ? '顯示夜間(A-F)' : '隱藏夜間(A-F)';
+            updateButtonLabels();
             renderTimetable();
         };
 
@@ -1202,9 +1229,7 @@
                         const settingsDocRef = doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'config');
                         await setDoc(settingsDocRef, { title: newTitle }, { merge: true });
                     }
-                } catch (err) {
-                    console.error("Save title failed:", err);
-                }
+                } catch (err) {}
             }
             closeEditTitleModal();
         };
